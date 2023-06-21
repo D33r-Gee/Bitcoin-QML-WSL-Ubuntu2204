@@ -191,6 +191,18 @@ static QStringList backtraceFramesForLogMessage(int frameCount)
     return result;
 }
 ```
+Also make sure to add the ANDROID_HOME variable to your .bashrc file:
+
+```bash
+nano ~/.bashrc
+```
+then add the following line to the end of the file:
+
+```bash
+export ANDROID_HOME=/home/<username>/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+```
+
 
 Once the APKs are built, install the debug version on your connected device using the following command from within the `qt` directory:
 
