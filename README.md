@@ -173,7 +173,7 @@ if you get an error like this:
 global/qlogging:1296:13 n = backtrace(...
 ```
 
-then you need to edit the function with the follwing:
+find the file qlogging.cpp (depends/.../work/.../global/) then you need to edit the function with the follwing:
 
 ```
 static QStringList backtraceFramesForLogMessage(int frameCount)
