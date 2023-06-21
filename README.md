@@ -167,6 +167,31 @@ More details on this step can be found [here](https://github.com/bitcoin/bitcoin
 
 Now, you can build the APKs using the guide found [here](https://github.com/bitcoin-core/gui-qml/blob/main/doc/build-android.md).
 
+if you get an error like this:
+
+```bash
+global/qlogging:1296:13 n = backtrace(...
+```
+
+then you need to edit the function with the follwing:
+
+```
+static QStringList backtraceFramesForLogMessage(int frameCount)
+{
+    QStringList result;
+    if (frameCount == 0)
+        return result;
+
+#ifdef Q_OS_ANDROID
+    result.append(QStringLiteral("Stack trace generation not supported on Android."));
+#else
+    // existing code here...
+#endif
+
+    return result;
+}
+```
+
 Once the APKs are built, install the debug version on your connected device using the following command from within the `qt` directory:
 
 ```bash
